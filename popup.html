@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestionnaire d'Onglets</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Onglets Actifs</h1>
+    <button id="showTabs">Afficher les onglets</button>
+    <ul id="tabsList"></ul>
+
+    <h2>Organiser par catégorie</h2>
+    <select id="categorySelect">
+      <option value="Travail">Travail</option>
+      <option value="Loisirs">Loisirs</option>
+      <option value="Recherches">Recherches</option>
+      <option value="Autres">Autres</option>
+    </select>
+    <button id="organizeTabs">Organiser les onglets</button>
+
+    <button id="saveSession">Enregistrer la session</button>
+    <ul id="savedSessionsList"></ul>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
