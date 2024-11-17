@@ -3,12 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tab Organizer</title>
+    <title>Tab Manager</title>
     <link rel="stylesheet" href="css/popup.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Delius+Unicase&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Tab Organizer</h1>
-    <input type="text" id="search-bar" placeholder="Search tabs..." />
+    <div id="header">
+      <h1 id="title">Tab Manager</h1>
+      <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Search tabs..." />
+        <span class="search-icon">&#128269;</span>
+      </div>
+    </div>
+
     <div id="tab-container">
       <!-- Les onglets seront ajoutés ici -->
     </div>
@@ -18,13 +30,26 @@
         <!-- Les groupes apparaîtront ici -->
       </div>
     </div>
-    <button id="save-session">Save Session</button>
-    <button id="load-session">Load Session</button>
-    <button id="close-inactive-tabs">Close Inactive Tabs</button>
-    <button id="export-session">Export Session</button>
 
-    <input type="file" id="import-session" style="display: none" />
-    <button id="import-session-button">Import Session</button>
+    <div id="session-controls">
+      <!-- Groupe "Import/Export" -->
+      <div class="button-group" id="import-export">
+        <button id="import-session-button">Import Session</button>
+        <input type="file" id="import-session" />
+        <button id="export-session">Export Session</button>
+      </div>
+
+      <!-- Groupe "Save/Load" -->
+      <div class="button-group" id="save-load">
+        <button id="save-session">Save Session</button>
+        <button id="load-session">Load Session</button>
+      </div>
+
+      <!-- Groupe "Close Tabs" -->
+      <div class="button-group" id="close-tabs">
+        <button id="close-inactive-tabs">Close Inactive Tabs</button>
+      </div>
+    </div>
 
     <script type="module" src="js/popup.js"></script>
   </body>

@@ -1,32 +1,82 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
-  width: 300px;
-  height: 400px;
+  padding: 2px;
+  width: 400px;
+  height: 500px;
   overflow: auto;
+  margin-top: 125px;
+}
+
+#header {
+  background-color: #2A2A2A ;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 24px;
+  font-family: "Delius Unicase", cursive;
+  border-bottom: 8px solid #A0A0A0;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; 
+}
+
+#title {
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+  font-style: normal;
+}
+
+#search-container {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+}
+#search-bar {
+  width: 90%;
+  padding: 5px 40px 5px 20px;
+  font-size: 18px;
+  font-family: "Atma", system-ui;
+  border: 3px solid #4C6E91;
+  border-radius: 25px;
+  background-color: #F3F4F6;
+  color: #333;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-icon {
+  position: relative;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  color: #4C6E91;
+  pointer-events: none;
+}
+
+#search-bar:focus {
+  border-color: #1F6FEB;
+  outline: none;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+#search-bar::placeholder {
+  color: #757575;
+  font-style: italic;
+  text-align: center;
 }
 
 #tab-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 10px;
   padding: 10px;
-}
-
-#group-container {
-  margin-top: 20px;
-}
-
-.group {
-  border: 1px solid #ccc;
-  margin: 10px 0;
-  padding: 10px;
-  background: #f2f2f2;
-}
-
-.group h3 {
-  margin: 0 0 10px;
+  max-width: 400px; 
 }
 
 .tab-item {
@@ -34,33 +84,217 @@ body {
   align-items: center;
   margin: 5px;
   padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid #a1a1a1;
+  border-radius: 8px;
   cursor: pointer;
-  width: max-content;
-  transition: background-color 0.3s ease;
+  width: 45px;
+  height: 45px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .tab-item:hover {
   background-color: #f0f0f0;
+  transform: scale(1.1);
 }
 
-/* Affichage de l'icône de l'onglet */
+.tab-item:active {
+  transform: scale(1);
+}
+
 .tab-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
+  width: 42px;
+  height: 42px;
+  margin-right: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 20%;
 }
 
-/* Cacher le titre de l'onglet par défaut */
-.tab-title {
+
+.tab-item:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: 20%;
+  left: 0;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  margin-top: 5px;
+  opacity: 0;
+  z-index: 10px;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.tab-item:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+#group-container {
+  width: 100%;
+  background-color: #f9f9f9;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: "Delius Unicase", cursive;
+  box-sizing: border-box;
+}
+
+#create-group, .delete-group{
+  display: block;
+  margin: 0 auto 10px auto;
+  padding: 10px;
+  background-color: #1F6FEB;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#create-group{
+  width: 95%;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+#create-group:hover {
+  background-color: #1740b3;
+  transform: scale(1.01);
+}
+
+/* Liste des groupes */
+#groups .group-tabs{
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  max-height: 400px;
+}
+
+.group-tabs{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#group-header {
+  width: 95%;
+  margin: 10px;
+  color: #c2c2c2;
+  background-color: #2A2A2A;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/* Un groupe individuel */
+.group-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background-color: #e7f0fa;
+  border: 2px solid #4c6e91;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.group-item:hover {
+  background-color: #d0e4f6;
+  transform: translateY(-3px);
+}
+
+.group h3 {
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:active {
+  transform: scale(0.98);
+  background-color: #003d80;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.button-group {
+  padding: 5px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.button-group h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+#session-controls {
+  display: flex;
+  flex-direction: column; 
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+}
+
+#import-session {
   display: none;
 }
 
-/* Afficher le titre lorsque l'onglet est survolé */
-.tab-item:hover .tab-title {
-  display: inline-block;
-  margin-left: 10px;
-  font-size: 14px;
-  color: #333;
+#save-session,
+#load-session,
+#export-session,
+#import-session-button {
+  margin: 4px;
+  width: 45%;
 }
+#close-inactive-tabs{
+  margin: 4px;
+  width: 95%;
+}
+/* 
+Palette Sombre et Élégante (Dark Mode)
+
+Couleur principale (fond) : #2A2A2A (gris foncé)
+Couleur accentuée : #1F6FEB (bleu vif)
+Couleur de survol (hover) : #185ABC (bleu plus foncé)
+Texte principal : #FFFFFF (blanc)
+Texte secondaire : #A0A0A0 (gris clair)
+Boutons / Appels à l'action : #1F6FEB (bleu vif)
+*/

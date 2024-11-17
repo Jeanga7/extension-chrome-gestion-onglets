@@ -7,20 +7,16 @@ export function initializeDragAndDrop() {
       tabItem.className = "tab-item";
       tabItem.draggable = true;
       tabItem.dataset.id = tab.id;
+      tabItem.title = tab.title || "New Tab";
 
       // Créer l'élément pour l'icône
       const tabIcon = document.createElement("img");
-      tabIcon.src = tab.favIconUrl || "./images/default-icon.jpg"; // Si pas d'icône, afficher une icône par défaut
+      tabIcon.src = tab.favIconUrl || "./images/default-icon.jpg"; 
       tabIcon.className = "tab-icon";
 
-      // Créer un élément pour le titre
-      const tabTitle = document.createElement("span");
-      tabTitle.textContent = tab.title || "New Tab";
-      tabTitle.className = "tab-title";
 
       // Ajout de l'icône et du titre à l'élément de l'onglet
       tabItem.appendChild(tabIcon);
-      tabItem.appendChild(tabTitle);
 
       // Lorsque l'icône est cliquée, rediriger vers l'onglet
       tabIcon.addEventListener("click", () => {
@@ -30,6 +26,10 @@ export function initializeDragAndDrop() {
       // Gérer l'événement de "dragstart"
       tabItem.addEventListener("dragstart", (e) => {
         e.dataTransfer.setData("text/plain", tabItem.dataset.id);
+      });
+
+      tabItem.addEventListener("click", () => {
+        chrome.tabs.update(tab.id, { active: true }); // Redirige vers l'onglet au clic
       });
 
       tabContainer.appendChild(tabItem);

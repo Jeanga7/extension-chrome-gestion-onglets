@@ -2,7 +2,7 @@ export function closeInactiveTabs() {
   const closeInactiveButton = document.getElementById("close-inactive-tabs");
 
   closeInactiveButton.addEventListener("click", () => {
-    const inactiveThreshold = 60 * 60 * 1000; // 1 heure
+    const inactiveThreshold = 30 * 60 * 1000;
     const now = Date.now();
 
     chrome.tabs.query({}, (tabs) => {

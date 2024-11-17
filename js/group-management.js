@@ -1,7 +1,6 @@
 export function setupGroupManagement() {
   const createGroupButton = document.getElementById("create-group");
   const groupsContainer = document.getElementById("groups");
-
   // Charger les groupes sauvegardés au démarrage
   chrome.storage.local.get("groups", (data) => {
     if (data.groups) {
@@ -25,7 +24,9 @@ export function setupGroupManagement() {
     const groupDiv = document.createElement("div");
     groupDiv.className = "group";
     groupDiv.innerHTML = `
-      <h3>${name}</h3>
+      <div id="group-header">
+        <h3 id="group-name">${name}</h3>
+      </div>
       <div class="group-tabs"></div>
       <button class="delete-group">Delete Group</button>
     `;
@@ -36,6 +37,10 @@ export function setupGroupManagement() {
 
     // Récupération des conteneurs pour les onglets et le bouton de suppression
     const groupTabsContainer = groupDiv.querySelector(".group-tabs");
+    // groupTabsContainer.setAttribute(
+    //   "style",
+    //   "display: flex; gap: 10px; padding: 10px; max-height: 400px; flex-wrap: wrap; flex-direction: row;"
+    // );
     const deleteButton = groupDiv.querySelector(".delete-group");
 
     // Ajout des onglets restaurés (si le groupe est chargé depuis la mémoire)
