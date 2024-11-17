@@ -1,28 +1,31 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gestionnaire d'Onglets</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Tab Organizer</title>
+    <link rel="stylesheet" href="css/popup.css" />
   </head>
   <body>
-    <h1>Onglets Actifs</h1>
-    <button id="showTabs">Afficher les onglets</button>
-    <ul id="tabsList"></ul>
+    <h1>Tab Organizer</h1>
+    <input type="text" id="search-bar" placeholder="Search tabs..." />
+    <div id="tab-container">
+      <!-- Les onglets seront ajoutés ici -->
+    </div>
+    <div id="group-container">
+      <button id="create-group">Create Group</button>
+      <div id="groups">
+        <!-- Les groupes apparaîtront ici -->
+      </div>
+    </div>
+    <button id="save-session">Save Session</button>
+    <button id="load-session">Load Session</button>
+    <button id="close-inactive-tabs">Close Inactive Tabs</button>
+    <button id="export-session">Export Session</button>
 
-    <h2>Organiser par catégorie</h2>
-    <select id="categorySelect">
-      <option value="Travail">Travail</option>
-      <option value="Loisirs">Loisirs</option>
-      <option value="Recherches">Recherches</option>
-      <option value="Autres">Autres</option>
-    </select>
-    <button id="organizeTabs">Organiser les onglets</button>
+    <input type="file" id="import-session" style="display: none" />
+    <button id="import-session-button">Import Session</button>
 
-    <button id="saveSession">Enregistrer la session</button>
-    <ul id="savedSessionsList"></ul>
-
-    <script src="popup.js"></script>
+    <script type="module" src="js/popup.js"></script>
   </body>
 </html>

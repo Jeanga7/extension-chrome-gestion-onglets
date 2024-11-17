@@ -1,0 +1,66 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 300px;
+  height: 400px;
+  overflow: auto;
+}
+
+#tab-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+#group-container {
+  margin-top: 20px;
+}
+
+.group {
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  padding: 10px;
+  background: #f2f2f2;
+}
+
+.group h3 {
+  margin: 0 0 10px;
+}
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  width: max-content;
+  transition: background-color 0.3s ease;
+}
+
+.tab-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Affichage de l'icône de l'onglet */
+.tab-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+/* Cacher le titre de l'onglet par défaut */
+.tab-title {
+  display: none;
+}
+
+/* Afficher le titre lorsque l'onglet est survolé */
+.tab-item:hover .tab-title {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 14px;
+  color: #333;
+}
